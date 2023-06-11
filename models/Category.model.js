@@ -5,7 +5,7 @@ const CategorySchema = Schema({
       type: String,
       required: true,
    },
-   image: {
+   urlImage: {
       type: String,
       required: true,
    },
