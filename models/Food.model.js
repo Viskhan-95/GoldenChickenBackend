@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, SchemaTypes } = require('mongoose');
 
 const FoodSchema = Schema({
     name: {
@@ -14,6 +14,10 @@ const FoodSchema = Schema({
         required: true,
      },
      size: Number,
+     category: {
+      ref: 'Category',
+      type: SchemaTypes.ObjectId
+     }
 });
 
 const Food = model('Food', FoodSchema);
