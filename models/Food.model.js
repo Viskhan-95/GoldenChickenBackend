@@ -15,11 +15,12 @@ const FoodSchema = Schema({
    },
    size: {
       type: Number,
-      default: 1,
+      required: true,
    },
    category: {
       ref: 'Category',
       type: SchemaTypes.ObjectId,
+      required: true,
    },
 });
 
