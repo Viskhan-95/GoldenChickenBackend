@@ -4,7 +4,7 @@ module.exports.cartController = {
    getCart: async (req, res) => {
       try {
          const data = await Cart.find().populate('food');
-         res.json(data);
+         data === null ? res.json('Корзина пуста') : res.json(data);
       } catch (error) {
          res.json(error + '. Ошибка загрузки корзины');
       }
@@ -40,9 +40,9 @@ module.exports.cartController = {
    deleteFromCart: async (req, res) => {
       try {
          await Cart.findByIdAndRemove(req.params.id);
-         res.json('Блюда ')
+         res.json('Блюда ');
       } catch (error) {
-         res.json(error + '. Ошибка при удалении из корзины')
+         res.json(error + '. Ошибка при удалении из корзины');
       }
-   }
+   },
 };
