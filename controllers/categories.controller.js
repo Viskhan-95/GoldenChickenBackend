@@ -12,7 +12,7 @@ module.exports.categoryController = {
    postCategory: async (req, res) => {
       try {
          const { name, urlImage } = req.body;
-         Category.create({ name, urlImage });
+         await Category.create({ name, urlImage });
          res.json('Категория добавлена');
       } catch (error) {
          res.json(error + '. Ошибка при добавлении категории');
@@ -21,7 +21,7 @@ module.exports.categoryController = {
    updateCategory: async (req, res) => {
       try {
          const { name, urlImage } = req.body;
-         Category.findByIdAndUpdate(req.params.id, {
+         await Category.findByIdAndUpdate(req.params.id, {
             name,
             urlImage,
          });
@@ -32,7 +32,7 @@ module.exports.categoryController = {
    },
    deleteCategory: async (req, res) => {
       try {
-         Category.findByIdAndRemove(req.params.id);
+         await Category.findByIdAndRemove(req.params.id);
          res.json('Категория удалена');
       } catch (error) {
          res.json(error + '. Ошибка при удалении категории');

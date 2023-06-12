@@ -5,6 +5,7 @@ const CartSchema = Schema({
       ref: 'Food',
       type: SchemaTypes.ObjectId,
       required: true,
+      unique: true,
    },
    price: {
       type: Number,
@@ -12,6 +13,7 @@ const CartSchema = Schema({
    },
    total: {
       type: Number,
+      default: 0,
       required: true,
    },
    count: {
