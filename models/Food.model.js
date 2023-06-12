@@ -1,6 +1,11 @@
 const { Schema, model, SchemaTypes } = require('mongoose');
 
 const FoodSchema = Schema({
+   category: {
+      ref: 'Category',
+      type: SchemaTypes.ObjectId,
+      required: true,
+   },
    name: {
       type: String,
       required: true,
@@ -15,11 +20,6 @@ const FoodSchema = Schema({
    },
    size: {
       type: Number,
-      required: true,
-   },
-   category: {
-      ref: 'Category',
-      type: SchemaTypes.ObjectId,
       required: true,
    },
 });

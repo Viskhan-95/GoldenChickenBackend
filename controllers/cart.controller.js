@@ -11,14 +11,14 @@ module.exports.cartController = {
    },
    postToCart: async (req, res) => {
       try {
-         const { food, price, total, count } = req.body;
+         const { food, total, count } = req.body;
          const data = await Cart.findById(req.params.id);
          if (data !== null) {
             data.count += count;
             data.total += total;
             await data.save();
          } else {
-            await Cart.create({ food, price, total, count });
+            await Cart.create({ food, total, count });
          }
          res.json('Добавлен в корзину');
       } catch (error) {
@@ -27,9 +27,9 @@ module.exports.cartController = {
    },
    updateCart: async (req, res) => {
       try {
-         const { price, count } = req.body;
+         const { total, count } = req.body;
          const data = await Cart.findById(req.params.id);
-         data.price += price;
+         data.total += total;
          data.count += count;
          await data.save();
          res.json('Изменен');

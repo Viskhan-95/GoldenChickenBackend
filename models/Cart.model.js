@@ -7,8 +7,9 @@ const CartSchema = Schema({
       required: true,
       unique: true,
    },
-   price: {
-      type: Number,
+   user: {
+      ref: 'User',
+      type: SchemaTypes.ObjectId,
       required: true,
    },
    total: {
