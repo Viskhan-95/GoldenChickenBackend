@@ -6,22 +6,22 @@ const UserSchema = Schema({
       type: SchemaTypes.ObjectId,
       required: true,
    },
-   name: {
+   role: {
       type: String,
       required: true,
+      default: 'user',
    },
    phone: {
       type: Number,
       required: true,
    },
-   password: {
+   name: {
       type: String,
       required: true,
    },
-   role: {
+   password: {
       type: String,
       required: true,
-      default: 'user',
    },
 });
 
