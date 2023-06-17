@@ -1,6 +1,6 @@
 const { Schema, model, SchemaTypes } = require('mongoose');
 
-const FoodSchema = Schema({
+const ProductSchema = Schema({
    category: {
       ref: 'Category',
       type: SchemaTypes.ObjectId,
@@ -24,6 +24,6 @@ const FoodSchema = Schema({
    },
 });
 
-const Food = model('Food', FoodSchema);
+const Product = model('Product', ProductSchema);
 
-module.exports = Food;
+module.exports = Product;

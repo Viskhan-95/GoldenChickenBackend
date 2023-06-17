@@ -1,19 +1,16 @@
 const { Schema, model, SchemaTypes } = require('mongoose');
 
 const CartSchema = Schema({
-   orders: [
+   products: [
       {
-         food: {
-            ref: 'Food',
+         product: {
+            ref: 'Product',
             type: SchemaTypes.ObjectId,
             unique: true,
          },
-         total: {
+         quantity: {
             type: Number,
-            default: 0,
-         },
-         count: {
-            type: Number,
+            default: 1,
          },
       },
    ],
@@ -22,7 +19,18 @@ const CartSchema = Schema({
       type: SchemaTypes.ObjectId,
       required: true,
    },
-   isActive: Boolean,
+   shipping: {
+      type: String,
+      required: true,
+   },
+   delivery_status: {
+      type: String,
+      default: 'pending',
+   },
+   payment_status: {
+      type: String,
+      required: true,
+   },
 });
 
 const Cart = model('Food', CartSchema);
