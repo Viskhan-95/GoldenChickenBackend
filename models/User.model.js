@@ -2,26 +2,24 @@ const { Schema, SchemaTypes, model } = require('mongoose');
 
 const UserSchema = Schema(
    {
-      cart: {
-         ref: 'Cart',
-         type: SchemaTypes.ObjectId,
-         required: true,
-      },
-      role: {
+      name: {
          type: String,
          required: true,
-         default: 'user',
+         minlength: 5,
+         maxlength: 60,
+      },
+      password: {
+         type: String,
+         required: true,
+         minlength: 6,
+         maxlength: 12,
       },
       phone: {
          type: Number,
          required: true,
       },
-      name: {
-         type: String,
-         required: true,
-      },
-      password: {
-         type: String,
+      isAdmin: {
+         type: Boolean,
          required: true,
       },
    },
