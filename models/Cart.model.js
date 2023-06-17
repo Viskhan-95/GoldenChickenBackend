@@ -33,6 +33,6 @@ const CartSchema = Schema({
    },
 });
 
-const Cart = model('Food', CartSchema);
+const Cart = model('Cart', CartSchema);
 
 module.exports = Cart;
