@@ -1,6 +1,6 @@
 const { Schema, model, SchemaTypes } = require('mongoose');
 
-const CartProductSchema = Schema(
+const OrderSchema = Schema(
    {
       products: [
          {
@@ -8,10 +8,12 @@ const CartProductSchema = Schema(
                ref: 'Product',
                type: SchemaTypes.ObjectId,
                unique: true,
+               required: true,
             },
             quantity: {
                type: Number,
                default: 1,
+               required: true,
             },
          },
       ],
@@ -22,18 +24,21 @@ const CartProductSchema = Schema(
       },
       shipping: {
          type: String,
+         required: true,
       },
       delivery_status: {
          type: String,
          default: 'pending',
+         required: true,
       },
       payment_status: {
          type: String,
+         required: true,
       },
    },
    { timestamps: true },
 );
 
-const CartProduct = model('CartProduct', CartProductSchema);
+const Order = model('Order', OrderSchema);
 
-module.exports = CartProduct;
+module.exports = Order;
