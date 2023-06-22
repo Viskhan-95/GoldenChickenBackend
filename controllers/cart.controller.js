@@ -1,9 +1,9 @@
-const Cart = require('../models/Cart.model');
+const CartProduct = require('../models/CartProduct.model');
 
 module.exports.cartController = {
    getCart: async (req, res) => {
       try {
-         const data = await Cart.find().populate('food');
+         const data = await Cart.find().populate('product');
          data === null ? res.json('Корзина пуста') : res.json(data);
       } catch (error) {
          res.json(error + '. Ошибка загрузки корзины');
@@ -11,12 +11,11 @@ module.exports.cartController = {
    },
    postToCart: async (req, res) => {
       try {
-         const { food, total, count } = req.body;
-         const data = await Cart.findById(req.params.id);
-         if (data !== null) {
-            data.count += count;
-            data.total += total;
-            await data.save();
+         const { user, product, quantity, shipping, delivery_status, payment_status } = req.body;
+         const data = await Cart.findById({ user: user });
+         if (data.products.length > 0) {
+         } else if (data === null) {
+            await Cart.create({ user });
          } else {
             await Cart.create({ food, total, count });
          }
