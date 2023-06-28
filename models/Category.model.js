@@ -6,10 +6,6 @@ const CategorySchema = Schema(
          type: String,
          required: true,
       },
-      urlImage: {
-         type: String,
-         required: true,
-      },
    },
    { timestamps: true },
 );

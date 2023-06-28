@@ -4,38 +4,37 @@ module.exports.categoryController = {
    getCategories: async (req, res) => {
       try {
          const data = await Category.find();
-         res.json(data);
+         res.status(200).json(data);
       } catch (error) {
-         res.json(error + '. Ошибка при получении категории!');
+         res.status(404).json(error + '. Ошибка при получении категории!');
       }
    },
    postCategory: async (req, res) => {
       try {
-         const { name, urlImage } = req.body;
-         await Category.create({ name, urlImage });
-         res.json('Категория добавлена');
+         const { name } = req.body;
+         await Category.create({ name });
+         res.status(201).json('Категория добавлена');
       } catch (error) {
-         res.json(error + '. Ошибка при добавлении категории');
+         res.status(400).json(error + '. Ошибка при добавлении категории');
       }
    },
    updateCategory: async (req, res) => {
       try {
-         const { name, urlImage } = req.body;
+         const { name } = req.body;
          await Category.findByIdAndUpdate(req.params.id, {
             name,
-            urlImage,
          });
-         res.json('Категория изменена');
+         res.status(200).json('Категория изменена');
       } catch (error) {
-         res.json(error + '. Ошибка при изменении категории');
+         res.status(404).json(error + '. Ошибка при изменении категории');
       }
    },
    deleteCategory: async (req, res) => {
       try {
          await Category.findByIdAndRemove(req.params.id);
-         res.json('Категория удалена');
+         res.status(200).json('Категория удалена');
       } catch (error) {
-         res.json(error + '. Ошибка при удалении категории');
+         res.status(404).json(error + '. Ошибка при удалении категории');
       }
    },
 };
