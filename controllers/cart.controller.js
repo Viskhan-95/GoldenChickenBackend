@@ -4,7 +4,7 @@ module.exports.cartController = {
    getCart: async (req, res) => {
       try {
          const data = await Cart.findOne({ user: req.params.id }).populate('products');
-         data === null ? res.status(200).json('Корзина пуста') : res.status(200).json(data);
+         data === null ? res.status(204).json('Корзина пуста') : res.status(200).json(data);
       } catch (error) {
          res.status(404).json(error + '. Ошибка загрузки корзины');
       }
