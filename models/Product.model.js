@@ -17,7 +17,7 @@ const ProductSchema = Schema(
       },
       desc: {
          type: String,
-         default: ' ',
+         default: '',
          required: true,
       },
       price: {
@@ -27,6 +27,7 @@ const ProductSchema = Schema(
       size: {
          type: Number,
          required: true,
+         default: 0,
       },
    },
    { timestamps: true },

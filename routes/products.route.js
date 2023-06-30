@@ -3,11 +3,11 @@ const { productController } = require('../controllers/products.controller');
 
 const route = Router();
 
-route.get('/food', productController.getProducts);
-route.get('/food/category/:id', productController.getProductsByCategory);
-route.get('/food/:id', productController.getProductById);
-route.post('/food', productController.postProduct);
-route.patch('/food/:id', productController.updateProduct);
-route.delete('/food/:id', productController.deleteProduct);
+route.get('/products', productController.getProducts);
+route.get('/products/:id', productController.getProductsByCategory);
+route.get('/product/:id', productController.getProductById);
+route.post('/product', productController.postProduct);
+route.patch('/product/:id', productController.updateProduct);
+route.delete('/product/:id', productController.deleteProduct);
 
 module.exports = route;

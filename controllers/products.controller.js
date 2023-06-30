@@ -27,8 +27,8 @@ module.exports.productController = {
    },
    postProduct: async (req, res) => {
       try {
-         const { name, urlImage, price, size, category } = req.body;
-         await Product.create({ name, urlImage, price, size, category });
+         const { category, name, urlImage, desc, price, size } = req.body;
+         await Product.create({ category, name, urlImage, desc, price, size });
          res.status(201).json('Успешно добавлено');
       } catch (error) {
          res.status(400).json(error + '. Ошибка при добавлении блюды');
